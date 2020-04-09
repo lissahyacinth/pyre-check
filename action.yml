@@ -1,0 +1,10 @@
+runs:
+inputs:
+  args:
+    description: Pyre Arguments
+    required: false
+    default: '--source-directory'
+using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.args }}
