@@ -12,5 +12,5 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: '3.x'
-        name: Pyre-Check Action Step
+      - name: Pyre-Check Action Step
       - uses: ./
