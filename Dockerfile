@@ -5,6 +5,6 @@ ADD entrypoint.sh /entrypoint.sh
 RUN apk add bash gcc musl-dev build-base linux-headers
 
 RUN pip install --upgrade pip
-RUN pip install pyre-check
+RUN pip install pyre-check==0.0.41
 
 ENTRYPOINT ["/entrypoint.sh"]
