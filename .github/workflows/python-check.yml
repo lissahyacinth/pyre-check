@@ -13,4 +13,4 @@ jobs:
         with:
           python-version: '3.x'
       - name: Pyre-Check Action Step
-      - uses: ./
+        uses: ./
