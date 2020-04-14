@@ -1,4 +1,8 @@
 inputs:
+  token:
+    description: "GitHub Token to add PR Comment"
+    required: true
+    default: ""
   args:
     description: Pyre Arguments
     required: false
@@ -7,4 +11,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.token }}
     - ${{ inputs.args }}

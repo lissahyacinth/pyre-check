@@ -1,6 +1,6 @@
 name: Static Analysis
 
-on: [push]
+on: pull_request
 
 jobs:
   build:
@@ -14,3 +14,5 @@ jobs:
         python-version: '3.x'
     - name: Pyre-Check Action Step
       uses: ./
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
