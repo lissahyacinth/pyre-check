@@ -7,7 +7,7 @@ GITHUB_TOKEN=$2
 post_pr_comment() {
   local msg=$1
   payload=$(echo '{}' | jq --arg body "${msg}" '.body = $body')
-  echo "$(cat ${GITHUB_EVENT_PATH})"
+  echo "$(cat ${GITHUB_EVENT_PATH} | jq -r .pull_request.comments_url)"
   request_url=$(cat ${GITHUB_EVENT_PATH} | jq -r .pull_request.comments_url)
   curl -s -S \
     -H "Authorization: token ${GITHUB_TOKEN}" \
