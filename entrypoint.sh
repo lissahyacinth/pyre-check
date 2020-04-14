@@ -1,3 +1,3 @@
 #! /bin/bash -l
 set -uo pipefail
-pyre $@ . check
+pyre --source-directory . check
