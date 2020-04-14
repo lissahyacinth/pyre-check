@@ -22,7 +22,7 @@ main() {
 
   comment_body="${comment_body}
 
-<details><summary><code>${output}</code></summary>
+<details><summary><code>Pyre Command (> pyre ${PYRE_ARGS} . check)</code></summary>
 \'\'\'\n
 $(cat /tmp/PyreOutput.txt)
 \`\`\`
