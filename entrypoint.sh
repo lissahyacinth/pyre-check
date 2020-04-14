@@ -12,7 +12,7 @@ post_pr_comment() {
     -H "Authorization: token ${GITHUB_TOKEN}" \
     --header "Content-Type: application/json" \
     --data "${payload}" \
-    "${request_url}" > /dev/null
+    "${request_url}" 
 }
 
 main() {
@@ -32,7 +32,6 @@ $(cat /tmp/PyreOutput.txt)
   comment_msg="## ${comment_title}
 ${comment_body}
 "
-
   post_pr_comment "${comment_msg}"
 }
 
