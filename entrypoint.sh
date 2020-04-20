@@ -29,23 +29,30 @@ install_dependencies() {
 main() {
   install_dependencies "${PIP_ARGS}"
   pyre $2 check > /tmp/PyreOutput.txt
-  comment_title="Pyre Output"
-  comment_body=""
+  if ! [ -s /tmp/PyreOutput.txt ]
+  then
+    exit 0
+  fi 
+  comment_msg = ""
+  for FILE in $(cat /tmp/PyreOutput.txt |
+    tr '\/' '\n' |
+    grep '\.py' |
+    awk -F ':' ' { print $1 } ' |
+    sort |
+    uniq)
+  do
+    comment_msg="${comment_msg}
 
-  comment_body="${comment_body}
-
-<details><summary><code>Pyre Command (> pyre ${PYRE_ARGS} check)</code></summary>
+ <details><summary><code>${FILE}</code></summary>
 
 \`\`\`
-$(cat /tmp/PyreOutput.txt)
+$(cat /tmp/PyreOutput.txt | grep ${FILE})
 \`\`\`
 
 </details>
 "
-  comment_msg="## ${comment_title}
-${comment_body}
-"
   post_pr_comment "${comment_msg}"
+  exit 1
 }
 
 main "$@"
