@@ -51,9 +51,9 @@ $(cat /tmp/PyreOutput.txt | grep ${FILE})
 
 </details>
 "
+  done
   post_pr_comment "${comment_msg}"
   exit 1
 }
 
 main "$@"
-
