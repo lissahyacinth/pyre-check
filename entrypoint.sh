@@ -33,7 +33,7 @@ main() {
   then
     exit 0
   fi 
-  comment_msg = ""
+  comment_msg=""
   for FILE in $(cat /tmp/PyreOutput.txt |
     tr '\/' '\n' |
     grep '\.py' |
