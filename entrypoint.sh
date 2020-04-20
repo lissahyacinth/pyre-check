@@ -33,7 +33,7 @@ main() {
   then
     exit 0
   fi 
-  comment_msg="##pyre ${PYRE_ARGS} check
+  comment_msg="## pyre ${PYRE_ARGS} check
   "
   for FILE in $(cat /tmp/PyreOutput.txt |
     tr '\/' '\n' |
