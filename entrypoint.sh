@@ -4,6 +4,7 @@ set -uo pipefail
 GITHUB_TOKEN=$1
 PYRE_ARGS=$2
 PIP_ARGS=$3
+SITE_PACKAGES=$(python -c "import site; print(site.getsitepackages()[0])")
 
 post_pr_comment() {
   local msg=$1
@@ -17,6 +18,7 @@ post_pr_comment() {
 }
 
 install_dependencies() {
+ pip install pyre-check
  local pip_args=$1
  if [ -z $1 ]
  then
@@ -34,7 +36,7 @@ main() {
 
   comment_body="${comment_body}
 
-<details><summary><code>Pyre Command (> pyre ${PYRE_ARGS} check)</code></summary>
+<details><summary><code>Pyre Command (> pyre --search-path ${SITE_PACKAGES} ${PYRE_ARGS} check)</code></summary>
 
 \`\`\`
 $(cat /tmp/PyreOutput.txt)
