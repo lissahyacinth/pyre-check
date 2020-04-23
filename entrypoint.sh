@@ -29,7 +29,7 @@ install_dependencies() {
 
 main() {
   install_dependencies "${PIP_ARGS}"
-  pyre $2 --search-path $SITE_PACKAGES} check > /tmp/PyreOutput.txt
+  pyre $2 --search-path ${SITE_PACKAGES} check > /tmp/PyreOutput.txt
   if ! [ -s /tmp/PyreOutput.txt ]
   then
     exit 0
